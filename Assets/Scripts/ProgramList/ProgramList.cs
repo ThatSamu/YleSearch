@@ -13,7 +13,6 @@ public class ProgramList : MonoBehaviour {
 	public GameObject listItem;
 
 	public static int SinglePageItemCount = 10;
-	public static int maxTitleLength = 50;
 	public delegate void OnScrollBottom();
 	public OnScrollBottom onScrollBottom;
 	List<GameObject> allItems;
@@ -47,10 +46,6 @@ public class ProgramList : MonoBehaviour {
 			var programTitle = program.title.fi;
 			if(programTitle == null || programTitle == ""){
 				continue;
-			}
-
-			if(programTitle.Length > maxTitleLength){
-				programTitle = programTitle.Substring(0, maxTitleLength) + "...";
 			}
 
 			// Instantiate a new list item, adjust the list and set object hierarchy.
