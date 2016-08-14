@@ -19,9 +19,8 @@ public class ProgramList : MonoBehaviour {
 
 	void Awake(){
 		contentHolder = transform.Find("Viewport/Content") as RectTransform;
-		itemHeight = 30f;
 		listWidth = contentHolder.sizeDelta.x;
-
+		itemHeight = contentHolder.sizeDelta.y / 10f;
 		allItems = new List<GameObject>();
 
 		transform.GetComponent<ScrollRect>().onValueChanged.AddListener(OnValueChanged);
@@ -56,6 +55,7 @@ public class ProgramList : MonoBehaviour {
 			newItem.transform.SetParent(contentHolder);
 			// Set the correct position for the new item inside the scroll content view.
 			newItem.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -itemHeight * allItems.Count);
+			newItem.transform.localScale = Vector3.one;
 
 			// Set the title of the program to the text component.
 			var uiTitle = newItem.transform.Find("Title").GetComponent<Text>();
